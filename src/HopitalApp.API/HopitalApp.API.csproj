@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HopitalApp.DTO\HopitalApp.DTO.csproj" />
+    <ProjectReference Include="..\HopitalApp.Application\HopitalApp.Application.csproj" />
+    <ProjectReference Include="..\HopitalApp.Infrastructure\HopitalApp.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

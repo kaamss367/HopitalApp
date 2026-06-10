@@ -1,11 +1,64 @@
 {
   "version": 4,
   "targets": {
-    "net10.0-windows": {}
+    "net10.0-windows": {
+      "HopitalApp.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "HopitalApp.DTO": "1.0.0",
+          "HopitalApp.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/HopitalApp.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HopitalApp.Application.dll": {}
+        }
+      },
+      "HopitalApp.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/HopitalApp.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HopitalApp.Domain.dll": {}
+        }
+      },
+      "HopitalApp.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/HopitalApp.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HopitalApp.DTO.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "HopitalApp.Application/1.0.0": {
+      "type": "project",
+      "path": "../HopitalApp.Application/HopitalApp.Application.csproj",
+      "msbuildProject": "../HopitalApp.Application/HopitalApp.Application.csproj"
+    },
+    "HopitalApp.Domain/1.0.0": {
+      "type": "project",
+      "path": "../HopitalApp.Domain/HopitalApp.Domain.csproj",
+      "msbuildProject": "../HopitalApp.Domain/HopitalApp.Domain.csproj"
+    },
+    "HopitalApp.DTO/1.0.0": {
+      "type": "project",
+      "path": "../HopitalApp.DTO/HopitalApp.DTO.csproj",
+      "msbuildProject": "../HopitalApp.DTO/HopitalApp.DTO.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0-windows": []
+    "net10.0-windows": [
+      "HopitalApp.Application >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\adham\\.nuget\\packages\\": {},
@@ -39,7 +92,11 @@
         "net10.0-windows": {
           "framework": "net10.0-windows7.0",
           "targetAlias": "net10.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\src\\HopitalApp.Application\\HopitalApp.Application.csproj": {
+              "projectPath": "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\src\\HopitalApp.Application\\HopitalApp.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

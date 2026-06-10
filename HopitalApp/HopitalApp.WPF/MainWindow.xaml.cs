@@ -1,47 +1,56 @@
-﻿using System.Net.Http;
-using System.Text;
-using System.Text.Json;
+﻿using System;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Windows;
 
 namespace HopitalApp.WPF
 {
     public partial class MainWindow : Window
     {
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("https://localhost:7101/")
+        };
 
         public MainWindow()
         {
             InitializeComponent();
-
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7101/");
         }
 
         private async void BtnConnexion_Click(object sender, RoutedEventArgs e)
         {
-            var login = txtLogin.Text;
-            var motDePasse = txtPassword.Password;
-
             var data = new
             {
-                login = login,
-                motDePasse = motDePasse
+                login = txtLogin.Text,
+                motDePasse = txtPassword.Password
             };
 
-            var json = JsonSerializer.Serialize(data);
+            var response = await _httpClient.PostAsJsonAsync("api/Auth/Login", data);
 
-            var content = new StringContent(
-                json,
-                Encoding.UTF8,
-                "application/json");
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Identifiants incorrects.");
+                return;
+            }
 
-            var response = await _httpClient.PostAsync(
-                "api/Auth/Login",
-                content);
+            var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
 
-            var result = await response.Content.ReadAsStringAsync();
-
-            MessageBox.Show(result);
+            if (result?.Role == "Administration")
+            {
+                AdminWindow adminWindow = new AdminWindow();
+                adminWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Rôle non autorisé.");
+            }
         }
+    }
+
+    public class LoginResponse
+    {
+        public string? Message { get; set; }
+        public string? Role { get; set; }
     }
 }

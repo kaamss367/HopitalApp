@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Éléments de solution/">
+    <File Path=".gitignore" />
+  </Folder>
   <Project Path="HopitalApp.WPF/HopitalApp.WPF.csproj" />
   <Project Path="HopitalApp/HopitalApp.csproj" />
 </Solution>

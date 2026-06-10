@@ -36,6 +36,53 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "HopitalApp.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "HopitalApp.DTO": "1.0.0",
+          "HopitalApp.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/HopitalApp.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HopitalApp.Application.dll": {}
+        }
+      },
+      "HopitalApp.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/HopitalApp.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HopitalApp.Domain.dll": {}
+        }
+      },
+      "HopitalApp.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/HopitalApp.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HopitalApp.DTO.dll": {}
+        }
+      },
+      "HopitalApp.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "HopitalApp.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/HopitalApp.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HopitalApp.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -75,10 +122,33 @@
         "microsoft.openapi.2.0.0.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "HopitalApp.Application/1.0.0": {
+      "type": "project",
+      "path": "../HopitalApp.Application/HopitalApp.Application.csproj",
+      "msbuildProject": "../HopitalApp.Application/HopitalApp.Application.csproj"
+    },
+    "HopitalApp.Domain/1.0.0": {
+      "type": "project",
+      "path": "../HopitalApp.Domain/HopitalApp.Domain.csproj",
+      "msbuildProject": "../HopitalApp.Domain/HopitalApp.Domain.csproj"
+    },
+    "HopitalApp.DTO/1.0.0": {
+      "type": "project",
+      "path": "../HopitalApp.DTO/HopitalApp.DTO.csproj",
+      "msbuildProject": "../HopitalApp.DTO/HopitalApp.DTO.csproj"
+    },
+    "HopitalApp.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../HopitalApp.Infrastructure/HopitalApp.Infrastructure.csproj",
+      "msbuildProject": "../HopitalApp.Infrastructure/HopitalApp.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "HopitalApp.Application >= 1.0.0",
+      "HopitalApp.DTO >= 1.0.0",
+      "HopitalApp.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.8"
     ]
   },
@@ -114,7 +184,17 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\src\\HopitalApp.Application\\HopitalApp.Application.csproj": {
+              "projectPath": "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\src\\HopitalApp.Application\\HopitalApp.Application.csproj"
+            },
+            "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\src\\HopitalApp.DTO\\HopitalApp.DTO.csproj": {
+              "projectPath": "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\src\\HopitalApp.DTO\\HopitalApp.DTO.csproj"
+            },
+            "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\src\\HopitalApp.Infrastructure\\HopitalApp.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\src\\HopitalApp.Infrastructure\\HopitalApp.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

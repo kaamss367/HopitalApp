@@ -1,0 +1,53 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "HopitalApp.Application/1.0.0": {
+        "dependencies": {
+          "HopitalApp.DTO": "1.0.0",
+          "HopitalApp.Domain": "1.0.0"
+        },
+        "runtime": {
+          "HopitalApp.Application.dll": {}
+        }
+      },
+      "HopitalApp.Domain/1.0.0": {
+        "runtime": {
+          "HopitalApp.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HopitalApp.DTO/1.0.0": {
+        "runtime": {
+          "HopitalApp.DTO.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HopitalApp.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HopitalApp.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HopitalApp.DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

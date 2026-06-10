@@ -1,0 +1,16 @@
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\bin\Debug\net10.0\HopitalApp.Infrastructure.deps.json
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\bin\Debug\net10.0\HopitalApp.Infrastructure.dll
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\bin\Debug\net10.0\HopitalApp.Infrastructure.pdb
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\bin\Debug\net10.0\HopitalApp.Domain.dll
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\bin\Debug\net10.0\HopitalApp.Domain.pdb
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\HopitalApp.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\HopitalApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\HopitalApp.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\HopitalApp.Infrastructure.AssemblyInfo.cs
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\HopitalApp.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\HopitalApp.Infrastructure.sourcelink.json
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\HopitalA.6F56675A.Up2Date
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\HopitalApp.Infrastructure.dll
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\refint\HopitalApp.Infrastructure.dll
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\HopitalApp.Infrastructure.pdb
+C:\Users\adham\OneDrive\المستندات\appli\appli_hopital\src\HopitalApp.Infrastructure\obj\Debug\net10.0\ref\HopitalApp.Infrastructure.dll

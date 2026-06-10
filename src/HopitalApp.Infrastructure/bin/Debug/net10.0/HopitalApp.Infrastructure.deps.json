@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "HopitalApp.Infrastructure/1.0.0": {
+        "dependencies": {
+          "HopitalApp.Domain": "1.0.0"
+        },
+        "runtime": {
+          "HopitalApp.Infrastructure.dll": {}
+        }
+      },
+      "HopitalApp.Domain/1.0.0": {
+        "runtime": {
+          "HopitalApp.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HopitalApp.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HopitalApp.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
