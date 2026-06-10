@@ -3,6 +3,7 @@ using HopitalApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HopitalApp.DTOs;
+using HopitalApp.Services;
 
 namespace HopitalApp.Controllers
 {
@@ -11,10 +12,12 @@ namespace HopitalApp.Controllers
     public class AuthController : ControllerBase
     {
         private readonly HopitalDbContext _context;
+        private readonly LogService _logService;
 
-        public AuthController(HopitalDbContext context)
+        public AuthController(HopitalDbContext context, LogService logService)
         {
             _context = context;
+            _logService = logService;
         }
 
         [HttpPost("Login")]
@@ -27,17 +30,18 @@ namespace HopitalApp.Controllers
 
             if (user == null)
             {
-                return Unauthorized(new
-                {
-                    Message = "Login ou mot de passe incorrect"
-                });
+                _logService.EcrireLog($"Connexion refusée : {LoginDto.Login}");
+                return Unauthorized("Identifiants incorrects");
             }
+
+            _logService.EcrireLog($"Connexion réussie : {user.Login}");
 
             return Ok(new
             {
-                Message = "Connexion réussie",
-                Role = user.Role
+                message = "Connexion réussie",
+                role = user.Role
             });
+
         }
     }
 }
