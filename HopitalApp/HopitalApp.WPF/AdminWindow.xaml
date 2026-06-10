@@ -1,14 +1,47 @@
 ﻿<Window x:Class="HopitalApp.WPF.AdminWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Administration" Height="450" Width="700">
+        Title="Administration" Height="520" Width="800">
 
     <Grid Margin="20">
         <StackPanel>
+
             <TextBlock Text="Tableau de bord administrateur"
                        FontSize="26"
                        FontWeight="Bold"
                        Margin="0,0,0,20"/>
+
+            <WrapPanel Margin="0,0,0,20">
+
+                <Border BorderThickness="1" Padding="15" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="Patients" FontWeight="Bold"/>
+                        <TextBlock x:Name="txtNbPatients" FontSize="24" Text="0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="1" Padding="15" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="Médecins" FontWeight="Bold"/>
+                        <TextBlock x:Name="txtNbMedecins" FontSize="24" Text="0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="1" Padding="15" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="Spécialités" FontWeight="Bold"/>
+                        <TextBlock x:Name="txtNbSpecialites" FontSize="24" Text="0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="1" Padding="15" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="Rendez-vous" FontWeight="Bold"/>
+                        <TextBlock x:Name="txtNbRendezVous" FontSize="24" Text="0"/>
+                    </StackPanel>
+                </Border>
+
+            </WrapPanel>
 
             <WrapPanel Margin="0,0,0,20">
                 <Button Content="Patients" Width="130" Height="40" Margin="5" Click="BtnPatients_Click"/>
@@ -19,6 +52,7 @@
 
             <TextBlock Text="Bienvenue dans l'espace administrateur."
                        FontSize="16"/>
+
         </StackPanel>
     </Grid>
 </Window>

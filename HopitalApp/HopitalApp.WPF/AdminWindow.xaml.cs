@@ -1,12 +1,34 @@
-﻿using System.Windows;
+﻿using System;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Windows;
 
 namespace HopitalApp.WPF
 {
     public partial class AdminWindow : Window
     {
+        private readonly HttpClient _httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("https://localhost:7101/")
+        };
+
         public AdminWindow()
         {
             InitializeComponent();
+            ChargerDashboard();
+        }
+
+        private async void ChargerDashboard()
+        {
+            var stats = await _httpClient.GetFromJsonAsync<DashboardStats>("api/Dashboard");
+
+            if (stats != null)
+            {
+                txtNbPatients.Text = stats.NombrePatients.ToString();
+                txtNbMedecins.Text = stats.NombreMedecins.ToString();
+                txtNbSpecialites.Text = stats.NombreSpecialites.ToString();
+                txtNbRendezVous.Text = stats.NombreRendezVous.ToString();
+            }
         }
 
         private void BtnPatients_Click(object sender, RoutedEventArgs e)
@@ -32,5 +54,13 @@ namespace HopitalApp.WPF
             RendezVousWindow window = new RendezVousWindow();
             window.Show();
         }
+    }
+
+    public class DashboardStats
+    {
+        public int NombrePatients { get; set; }
+        public int NombreMedecins { get; set; }
+        public int NombreSpecialites { get; set; }
+        public int NombreRendezVous { get; set; }
     }
 }
