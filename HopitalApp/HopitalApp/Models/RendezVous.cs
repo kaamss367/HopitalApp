@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Hopital.API.Models
+namespace HopitalApp.Models
 {
     [Table("RendezVous")]
     public class RendezVous

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace Hopital.API.Models
+namespace HopitalApp.Models
 {
     [Table("Medecin")]
     public class Medecin
