@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="HopitalApp.WPF/HopitalApp.WPF.csproj" />
+  <Project Path="HopitalApp/HopitalApp.csproj" />
+</Solution>
