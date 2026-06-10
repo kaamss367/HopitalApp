@@ -11,7 +11,8 @@ namespace HopitalApp.WPF
 
         private void BtnPatients_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Fenêtre Patients à venir");
+            PatientWindow patientWindow = new PatientWindow();
+            patientWindow.Show();
         }
 
         private void BtnMedecins_Click(object sender, RoutedEventArgs e)
