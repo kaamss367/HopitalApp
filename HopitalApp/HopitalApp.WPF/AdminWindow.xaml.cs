@@ -17,17 +17,20 @@ namespace HopitalApp.WPF
 
         private void BtnMedecins_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Fenêtre Médecins à venir");
+            MedecinWindow window = new MedecinWindow();
+            window.Show();
         }
 
         private void BtnSpecialites_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Fenêtre Spécialités à venir");
+            SpecialiteWindow window = new SpecialiteWindow();
+            window.Show();
         }
 
         private void BtnRendezVous_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Fenêtre Rendez-vous à venir");
+            RendezVousWindow window = new RendezVousWindow();
+            window.Show();
         }
     }
 }
