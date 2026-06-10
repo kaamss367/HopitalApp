@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/HopitalApp.API/HopitalApp.API.csproj" />
+    <Project Path="src/HopitalApp.DTO/HopitalApp.DTO.csproj" />
+    <Project Path="src/HopitalApp.WPF/HopitalApp.WPF.csproj" />
+  </Folder>
+</Solution>

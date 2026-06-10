@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "roFi5ljq/Xk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\src\\HopitalApp.API\\HopitalApp.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\adham\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
+    "C:\\Users\\adham\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
