@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json.Serialization; //  AJOUT RANDOMUSER
 using System.Windows;
 using System.Windows.Controls;
 
@@ -55,12 +56,14 @@ namespace HopitalApp.WPF
 
             if (response.IsSuccessStatusCode)
             {
+                Logger.Log($"Ajout patient : {patient.Nom} {patient.Prenom}");
                 MessageBox.Show("Patient ajouté avec succès.");
                 ViderChamps();
                 ChargerPatients();
             }
             else
             {
+                Logger.Log("Erreur lors de l'ajout d'un patient");
                 MessageBox.Show("Erreur lors de l'ajout du patient.");
             }
         }
@@ -85,12 +88,14 @@ namespace HopitalApp.WPF
 
             if (response.IsSuccessStatusCode)
             {
+                Logger.Log($"Modification patient ID={patientSelectionne.Id}");
                 MessageBox.Show("Patient modifié avec succès.");
                 ViderChamps();
                 ChargerPatients();
             }
             else
             {
+                Logger.Log($"Erreur modification patient ID={patientSelectionne.Id}");
                 MessageBox.Show("Erreur lors de la modification du patient.");
             }
         }
@@ -107,13 +112,58 @@ namespace HopitalApp.WPF
 
             if (response.IsSuccessStatusCode)
             {
+                Logger.Log($"Suppression patient ID={patientSelectionne.Id}");
                 MessageBox.Show("Patient supprimé avec succès.");
                 ViderChamps();
                 ChargerPatients();
             }
             else
             {
+                Logger.Log($"Erreur suppression patient ID={patientSelectionne.Id}");
                 MessageBox.Show("Erreur lors de la suppression du patient.");
+            }
+        }
+
+        // ✅ AJOUT RANDOMUSER
+        private async void BtnImporterRandomUser_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var randomClient = new HttpClient();
+
+                var result = await randomClient.GetFromJsonAsync<RandomUserResponse>(
+                    "https://randomuser.me/api/?results=10&nat=fr"
+                );
+
+                if (result?.Results == null)
+                {
+                    Logger.Log("Erreur import RandomUser : résultat vide");
+                    MessageBox.Show("Erreur lors de l'import RandomUser.");
+                    return;
+                }
+
+                foreach (var user in result.Results)
+                {
+                    var patient = new Patient
+                    {
+                        Nom = user.Name.Last,
+                        Prenom = user.Name.First,
+                        Telephone = user.Phone,
+                        Email = user.Email
+                    };
+
+                    await _httpClient.PostAsJsonAsync("api/Patients", patient);
+                }
+
+                Logger.Log("Import de 10 patients depuis RandomUser");
+                MessageBox.Show("10 patients importés avec succès.");
+
+                ChargerPatients();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log($"Erreur RandomUser : {ex.Message}");
+                MessageBox.Show("Erreur lors de l'appel à l'API RandomUser.");
             }
         }
 
@@ -141,5 +191,33 @@ namespace HopitalApp.WPF
         public string? Prenom { get; set; }
         public string? Telephone { get; set; }
         public string? Email { get; set; }
+    }
+
+    //  AJOUT RANDOMUSER
+    public class RandomUserResponse
+    {
+        [JsonPropertyName("results")]
+        public List<RandomUserItem>? Results { get; set; }
+    }
+
+    public class RandomUserItem
+    {
+        [JsonPropertyName("name")]
+        public RandomUserName Name { get; set; } = new();
+
+        [JsonPropertyName("email")]
+        public string Email { get; set; } = "";
+
+        [JsonPropertyName("phone")]
+        public string Phone { get; set; } = "";
+    }
+
+    public class RandomUserName
+    {
+        [JsonPropertyName("first")]
+        public string First { get; set; } = "";
+
+        [JsonPropertyName("last")]
+        public string Last { get; set; } = "";
     }
 }

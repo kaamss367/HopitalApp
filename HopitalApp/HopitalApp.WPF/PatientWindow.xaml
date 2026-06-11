@@ -35,6 +35,13 @@
             <Button Content="Modifier"       Height="35" Margin="0,0,0,5" Click="BtnModifier_Click"/>
             <Button Content="Supprimer"      Height="35" Margin="0,0,0,5" Click="BtnSupprimer_Click"/>
             <Button Content="Nouveau / Vider" Height="35"                 Click="BtnVider_Click"/>
+
+            <!-- NOUVEAU BOUTON RANDOMUSER -->
+            <Button Content="Importer 10 patients RandomUser"
+        Height="35"
+        Margin="0,5,0,0"
+        Click="BtnImporterRandomUser_Click"/>
+
         </StackPanel>
     </Grid>
 </Window>
