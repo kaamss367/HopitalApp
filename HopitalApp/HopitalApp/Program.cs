@@ -24,7 +24,8 @@ builder.Services.AddDbContext<HopitalDbContext>(options =>
     );
 });
 
-builder.Services.AddSingleton <HopitalApp.Services.LogService>();
+builder.Services.AddSingleton<HopitalApp.Services.LogService>();
+builder.Services.AddSingleton<HopitalApp.Services.PasswordService>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

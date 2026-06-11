@@ -43,6 +43,9 @@
                         Visibility="Collapsed"/>
                 <Button x:Name="btnRendezVous" Content="📅  Rendez-vous"
                         Style="{StaticResource NavBtn}" Click="Nav_Click" Tag="RendezVous"/>
+                <Button x:Name="btnUtilisateurs" Content="🔐  Utilisateurs"
+                        Style="{StaticResource NavBtn}" Click="Nav_Click" Tag="Utilisateurs"
+                        Visibility="Collapsed"/>
             </StackPanel>
 
             <!-- Bas : utilisateur + déconnexion -->

@@ -15,9 +15,10 @@ namespace HopitalApp.WPF
 
             if (role == "Administration")
             {
-                btnDashboard.Visibility   = Visibility.Visible;
-                btnMedecins.Visibility    = Visibility.Visible;
-                btnSpecialites.Visibility = Visibility.Visible;
+                btnDashboard.Visibility    = Visibility.Visible;
+                btnMedecins.Visibility     = Visibility.Visible;
+                btnSpecialites.Visibility  = Visibility.Visible;
+                btnUtilisateurs.Visibility = Visibility.Visible;
                 NaviguerVers("Dashboard");
             }
             else
@@ -40,8 +41,9 @@ namespace HopitalApp.WPF
                 "Patients"    => new PatientPage(),
                 "Medecins"    => new MedecinPage(),
                 "Specialites" => new SpecialitePage(),
-                "RendezVous"  => new RendezVousPage(),
-                _             => null
+                "RendezVous"    => new RendezVousPage(),
+                "Utilisateurs"  => new UtilisateurPage(),
+                _               => null
             };
         }
 

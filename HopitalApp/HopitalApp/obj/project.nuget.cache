@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IsVPSFfn5BI=",
+  "dgSpecHash": "YSVbsH+awWU=",
   "success": true,
   "projectFilePath": "C:\\Users\\adham\\OneDrive\\المستندات\\appli\\appli_hopital\\HopitalApp\\HopitalApp\\HopitalApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\adham\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\adham\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\adham\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\adham\\.nuget\\packages\\microsoft.build.framework\\17.8.3\\microsoft.build.framework.17.8.3.nupkg.sha512",

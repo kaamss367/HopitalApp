@@ -1,0 +1,99 @@
+<UserControl x:Class="HopitalApp.WPF.UtilisateurPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource PageBg}">
+    <Grid Margin="24,20,24,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titre -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="🔐  Gestion des utilisateurs" FontSize="22" FontWeight="Bold"
+                       Foreground="{StaticResource TitleBrush}"/>
+            <TextBlock Text="Créer des comptes avec mots de passe sécurisés (BCrypt)" FontSize="12"
+                       Foreground="#B06080" Margin="0,2,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Info / explication -->
+            <Border Grid.Column="0" Background="White" CornerRadius="10"
+                    BorderBrush="#F8C8D8" BorderThickness="1" Padding="24" Margin="0,0,16,0">
+                <StackPanel>
+                    <TextBlock Text="ℹ️  Comment fonctionne le hachage ?" FontSize="15"
+                               FontWeight="Bold" Foreground="{StaticResource TitleBrush}"
+                               Margin="0,0,0,14"/>
+
+                    <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="13" LineHeight="22">
+                        <Run FontWeight="Bold">Algorithme utilisé : BCrypt (workFactor 12)</Run>
+                        <LineBreak/><LineBreak/>
+                        Les mots de passe ne sont <Run FontWeight="Bold">jamais stockés en clair</Run>
+                        dans la base de données. À la création d'un compte, le mot de passe est
+                        transformé en une chaîne de 60 caractères ressemblant à :<LineBreak/>
+                        <Run Foreground="#C2185B" FontFamily="Courier New">$2b$12$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</Run>
+                        <LineBreak/><LineBreak/>
+                        <Run FontWeight="Bold">Sel aléatoire</Run> : chaque hash est unique même pour
+                        le même mot de passe, grâce à un sel généré automatiquement.<LineBreak/><LineBreak/>
+                        <Run FontWeight="Bold">WorkFactor 12</Run> : BCrypt effectue 2^12 = 4 096 tours
+                        de calcul, ce qui rend les attaques par force brute très coûteuses.<LineBreak/><LineBreak/>
+                        <Run FontWeight="Bold">Vérification</Run> : lors de la connexion, BCrypt.Verify()
+                        compare le mot de passe saisi avec le hash stocké, sans jamais le déchiffrer.
+                    </TextBlock>
+
+                    <Rectangle Height="1" Fill="#F8C8D8" Margin="0,20,0,20"/>
+
+                    <TextBlock Text="⚠️  Migration des comptes existants" FontSize="14"
+                               FontWeight="Bold" Foreground="#C2185B" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="13" LineHeight="22">
+                        Si des comptes ont été créés avant l'ajout du hachage (mots de passe
+                        en clair en BDD), clique sur le bouton ci-dessous pour les migrer
+                        automatiquement. Cette opération est <Run FontWeight="Bold">sans danger</Run>
+                        et ne modifie que les comptes non encore hachés.
+                    </TextBlock>
+                    <Button Content="🔄  Migrer les mots de passe existants"
+                            Height="38" Margin="0,14,0,0" Width="280"
+                            HorizontalAlignment="Left" Background="#E91E63"
+                            Click="BtnMigrer_Click"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Formulaire création -->
+            <Border Grid.Column="1" Background="White" CornerRadius="10"
+                    BorderBrush="#F8C8D8" BorderThickness="1" Padding="20,18">
+                <StackPanel>
+                    <TextBlock Text="Créer un compte" FontSize="16" FontWeight="Bold"
+                               Foreground="{StaticResource TitleBrush}" Margin="0,0,0,16"/>
+
+                    <TextBlock Text="Login" Foreground="#880E4F" FontSize="12" Margin="0,0,0,3"/>
+                    <TextBox x:Name="txtLogin" Margin="0,0,0,12"/>
+
+                    <TextBlock Text="Mot de passe" Foreground="#880E4F" FontSize="12" Margin="0,0,0,3"/>
+                    <PasswordBox x:Name="txtMotDePasse" Margin="0,0,0,4"/>
+                    <TextBlock Text="(minimum 6 caractères)" FontSize="11"
+                               Foreground="#B06080" Margin="0,0,0,12"/>
+
+                    <TextBlock Text="Confirmer le mot de passe" Foreground="#880E4F" FontSize="12" Margin="0,0,0,3"/>
+                    <PasswordBox x:Name="txtConfirm" Margin="0,0,0,12"/>
+
+                    <TextBlock Text="Rôle" Foreground="#880E4F" FontSize="12" Margin="0,0,0,3"/>
+                    <ComboBox x:Name="cbRole" Margin="0,0,0,20">
+                        <ComboBoxItem Content="Accueil" IsSelected="True"/>
+                        <ComboBoxItem Content="Administration"/>
+                    </ComboBox>
+
+                    <Button Content="✅  Créer le compte" Height="38"
+                            Click="BtnCreer_Click"/>
+
+                    <TextBlock x:Name="lblResultat" TextWrapping="Wrap"
+                               Margin="0,12,0,0" FontSize="12" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
