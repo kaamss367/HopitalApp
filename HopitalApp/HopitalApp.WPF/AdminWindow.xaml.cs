@@ -56,11 +56,4 @@ namespace HopitalApp.WPF
         }
     }
 
-    public class DashboardStats
-    {
-        public int NombrePatients { get; set; }
-        public int NombreMedecins { get; set; }
-        public int NombreSpecialites { get; set; }
-        public int NombreRendezVous { get; set; }
-    }
 }

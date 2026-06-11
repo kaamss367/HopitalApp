@@ -38,22 +38,11 @@ namespace HopitalApp.WPF
 
             var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
 
-            if (result?.Role == "Administration")
+            if (result?.Role == "Administration" || result?.Role == "Accueil")
             {
-                // AJOUT LOG
-                Logger.Log($"Connexion Administration : {txtLogin.Text}");
-
-                AdminWindow adminWindow = new AdminWindow();
-                adminWindow.Show();
-                this.Close();
-            }
-            else if (result?.Role == "Accueil")
-            {
-                // AJOUT LOG
-                Logger.Log($"Connexion Accueil : {txtLogin.Text}");
-
-                AccueilWindow accueilWindow = new AccueilWindow();
-                accueilWindow.Show();
+                Logger.Log($"Connexion {result.Role} : {txtLogin.Text}");
+                var shell = new ShellWindow(result.Role, txtLogin.Text);
+                shell.Show();
                 this.Close();
             }
             else
@@ -66,9 +55,4 @@ namespace HopitalApp.WPF
         }
     }
 
-    public class LoginResponse
-    {
-        public string? Message { get; set; }
-        public string? Role { get; set; }
-    }
 }

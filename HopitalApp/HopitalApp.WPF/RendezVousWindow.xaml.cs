@@ -159,7 +159,7 @@ namespace HopitalApp.WPF
         {
             IEnumerable<RendezVous> resultats = tousLesRendezVous;
 
-            if (!chkHistorique.IsChecked != true)
+            if (chkHistorique.IsChecked != true)
             {
                 resultats = resultats.Where(r => r.DateDebut >= DateTime.Now);
             }
@@ -205,14 +205,8 @@ namespace HopitalApp.WPF
             if (rendezVousSelectionne == null)
                 return;
 
-            MessageBox.Show(
-                $"Patient : {rendezVousSelectionne.Patient?.NomComplet}\n" +
-                $"Médecin : {rendezVousSelectionne.Medecin?.NomComplet}\n" +
-                $"Début : {rendezVousSelectionne.DateDebut:dd/MM/yyyy HH:mm}\n" +
-                $"Fin : {rendezVousSelectionne.DateFin:dd/MM/yyyy HH:mm}\n\n" +
-                $"Infos : {rendezVousSelectionne.InformationsComplementaires}",
-                "Détail du rendez-vous"
-            );
+            var detail = new RendezVousDetailWindow(rendezVousSelectionne) { Owner = this };
+            detail.ShowDialog();
         }
 
         private bool ConstruireRendezVous(out RendezVous rdv)
@@ -322,40 +316,4 @@ namespace HopitalApp.WPF
         }
     }
 
-    public class RendezVous
-    {
-        public int Id { get; set; }
-
-        public int PatientId { get; set; }
-        public PatientRdv? Patient { get; set; }
-
-        public int MedecinId { get; set; }
-        public MedecinRdv? Medecin { get; set; }
-
-        public DateTime DateDebut { get; set; }
-        public DateTime DateFin { get; set; }
-
-        public string? InformationsComplementaires { get; set; }
-    }
-
-    public class PatientRdv
-    {
-        public int Id { get; set; }
-        public string? Nom { get; set; }
-        public string? Prenom { get; set; }
-
-        public string NomComplet => $"{Nom} {Prenom}";
-    }
-
-    public class MedecinRdv
-    {
-        public int Id { get; set; }
-        public string? Nom { get; set; }
-        public string? Prenom { get; set; }
-        public int SpecialiteId { get; set; }
-
-        public Specialite? Specialite { get; set; }
-
-        public string NomComplet => $"{Nom} {Prenom}";
-    }
 }

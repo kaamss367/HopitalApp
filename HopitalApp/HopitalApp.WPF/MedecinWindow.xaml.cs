@@ -129,16 +129,4 @@ namespace HopitalApp.WPF
         }
     }
 
-    public class Medecin
-    {
-        public int Id { get; set; }
-
-        public string? Nom { get; set; }
-
-        public string? Prenom { get; set; }
-
-        public int SpecialiteId { get; set; }
-
-        public Specialite? Specialite { get; set; }
-    }
 }

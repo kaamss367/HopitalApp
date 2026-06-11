@@ -1,9 +1,134 @@
-﻿<Application x:Class="HopitalApp.WPF.App"
+<Application x:Class="HopitalApp.WPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:HopitalApp.WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <!-- ── Couleurs ── -->
+        <SolidColorBrush x:Key="SidebarBg"      Color="#2D0B1F"/>
+        <SolidColorBrush x:Key="SidebarHover"   Color="#4A1435"/>
+        <SolidColorBrush x:Key="SidebarActive"  Color="#C2185B"/>
+        <SolidColorBrush x:Key="PageBg"         Color="#FFF5F8"/>
+        <SolidColorBrush x:Key="CardBg"         Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="CardBorder"     Color="#F8C8D8"/>
+        <SolidColorBrush x:Key="PrimaryBrush"   Color="#C2185B"/>
+        <SolidColorBrush x:Key="PrimaryHover"   Color="#AD1457"/>
+        <SolidColorBrush x:Key="TitleBrush"     Color="#880E4F"/>
+        <SolidColorBrush x:Key="SubtleBrush"    Color="#F8BBD9"/>
+        <SolidColorBrush x:Key="DgHeaderBrush"  Color="#F8C8D8"/>
+        <SolidColorBrush x:Key="DgAltRowBrush"  Color="#FFF0F5"/>
+
+        <!-- ── Bouton standard (rose) ── -->
+        <Style TargetType="Button">
+            <Setter Property="Background"   Value="#C2185B"/>
+            <Setter Property="Foreground"   Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding"      Value="14,7"/>
+            <Setter Property="FontSize"     Value="13"/>
+            <Setter Property="Cursor"       Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}"
+                                CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#AD1457"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#880E4F"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Bd" Property="Background" Value="#E8B4C8"/>
+                                <Setter Property="Foreground" Value="#CCAABB"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ── Bouton de navigation sidebar ── -->
+        <Style x:Key="NavBtn" TargetType="Button">
+            <Setter Property="Background"              Value="Transparent"/>
+            <Setter Property="Foreground"              Value="#F8BBD9"/>
+            <Setter Property="BorderThickness"         Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding"                 Value="22,13"/>
+            <Setter Property="FontSize"                Value="14"/>
+            <Setter Property="Cursor"                  Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#4A1435"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ── TextBox ── -->
+        <Style TargetType="TextBox">
+            <Setter Property="BorderBrush"     Value="#F0B8CE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding"         Value="7,5"/>
+            <Setter Property="Background"      Value="White"/>
+            <Setter Property="FontSize"        Value="13"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#C2185B"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- ── PasswordBox ── -->
+        <Style TargetType="PasswordBox">
+            <Setter Property="BorderBrush"     Value="#F0B8CE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding"         Value="7,5"/>
+            <Setter Property="Background"      Value="White"/>
+            <Setter Property="FontSize"        Value="13"/>
+        </Style>
+
+        <!-- ── ComboBox ── -->
+        <Style TargetType="ComboBox">
+            <Setter Property="BorderBrush"     Value="#F0B8CE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding"         Value="7,4"/>
+            <Setter Property="Background"      Value="White"/>
+            <Setter Property="FontSize"        Value="13"/>
+        </Style>
+
+        <!-- ── DataGrid ── -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background"            Value="White"/>
+            <Setter Property="BorderBrush"           Value="#F8C8D8"/>
+            <Setter Property="BorderThickness"       Value="1"/>
+            <Setter Property="RowBackground"         Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#FFF0F5"/>
+            <Setter Property="GridLinesVisibility"   Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#F8C8D8"/>
+            <Setter Property="FontSize"              Value="13"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background"   Value="#F8C8D8"/>
+            <Setter Property="Foreground"   Value="#880E4F"/>
+            <Setter Property="FontWeight"   Value="SemiBold"/>
+            <Setter Property="Padding"      Value="8,6"/>
+            <Setter Property="BorderBrush"  Value="#F0A8C0"/>
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+        </Style>
+
     </Application.Resources>
 </Application>

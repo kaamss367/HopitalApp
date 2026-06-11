@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text.Json.Serialization; //  AJOUT RANDOMUSER
 using System.Windows;
 using System.Windows.Controls;
 
@@ -184,40 +183,4 @@ namespace HopitalApp.WPF
         }
     }
 
-    public class Patient
-    {
-        public int Id { get; set; }
-        public string? Nom { get; set; }
-        public string? Prenom { get; set; }
-        public string? Telephone { get; set; }
-        public string? Email { get; set; }
-    }
-
-    //  AJOUT RANDOMUSER
-    public class RandomUserResponse
-    {
-        [JsonPropertyName("results")]
-        public List<RandomUserItem>? Results { get; set; }
-    }
-
-    public class RandomUserItem
-    {
-        [JsonPropertyName("name")]
-        public RandomUserName Name { get; set; } = new();
-
-        [JsonPropertyName("email")]
-        public string Email { get; set; } = "";
-
-        [JsonPropertyName("phone")]
-        public string Phone { get; set; } = "";
-    }
-
-    public class RandomUserName
-    {
-        [JsonPropertyName("first")]
-        public string First { get; set; } = "";
-
-        [JsonPropertyName("last")]
-        public string Last { get; set; } = "";
-    }
 }

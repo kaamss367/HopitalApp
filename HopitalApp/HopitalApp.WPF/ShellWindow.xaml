@@ -1,0 +1,62 @@
+<Window x:Class="HopitalApp.WPF.ShellWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hôpital" Height="680" Width="1100"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource PageBg}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ══════════════ SIDEBAR ══════════════ -->
+        <Grid Grid.Column="0" Background="{StaticResource SidebarBg}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- En-tête -->
+            <StackPanel Grid.Row="0" Margin="0,28,0,20">
+                <TextBlock Text="🏥" FontSize="34"
+                           HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                <TextBlock Text="Hôpital" FontSize="18" FontWeight="Bold"
+                           Foreground="White" HorizontalAlignment="Center"/>
+                <Rectangle Height="1" Margin="20,16,20,0" Fill="#4A1435"/>
+            </StackPanel>
+
+            <!-- Navigation -->
+            <StackPanel Grid.Row="1">
+                <Button x:Name="btnDashboard"  Content="📊  Tableau de bord"
+                        Style="{StaticResource NavBtn}" Click="Nav_Click" Tag="Dashboard"
+                        Visibility="Collapsed"/>
+                <Button x:Name="btnPatients"   Content="👤  Patients"
+                        Style="{StaticResource NavBtn}" Click="Nav_Click" Tag="Patients"/>
+                <Button x:Name="btnMedecins"   Content="🩺  Médecins"
+                        Style="{StaticResource NavBtn}" Click="Nav_Click" Tag="Medecins"
+                        Visibility="Collapsed"/>
+                <Button x:Name="btnSpecialites" Content="🏷️  Spécialités"
+                        Style="{StaticResource NavBtn}" Click="Nav_Click" Tag="Specialites"
+                        Visibility="Collapsed"/>
+                <Button x:Name="btnRendezVous" Content="📅  Rendez-vous"
+                        Style="{StaticResource NavBtn}" Click="Nav_Click" Tag="RendezVous"/>
+            </StackPanel>
+
+            <!-- Bas : utilisateur + déconnexion -->
+            <StackPanel Grid.Row="2" Margin="0,0,0,16">
+                <Rectangle Height="1" Margin="20,0,20,12" Fill="#4A1435"/>
+                <TextBlock x:Name="lblUtilisateur" Foreground="#F8BBD9"
+                           FontSize="12" Margin="22,0,0,8" TextWrapping="Wrap"/>
+                <Button Content="🚪  Déconnexion" Style="{StaticResource NavBtn}"
+                        Click="BtnDeconnexion_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- ══════════════ CONTENU ══════════════ -->
+        <ContentControl x:Name="MainContent" Grid.Column="1"
+                        Margin="0" Background="{StaticResource PageBg}"/>
+    </Grid>
+</Window>

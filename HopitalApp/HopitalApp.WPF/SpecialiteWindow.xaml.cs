@@ -110,10 +110,4 @@ namespace HopitalApp.WPF
         }
     }
 
-    public class Specialite
-    {
-        public int Id { get; set; }
-
-        public string? Nom { get; set; }
-    }
 }

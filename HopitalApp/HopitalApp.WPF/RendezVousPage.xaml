@@ -1,0 +1,118 @@
+<UserControl x:Class="HopitalApp.WPF.RendezVousPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource PageBg}">
+    <Grid Margin="24,20,24,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titre -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,14">
+            <TextBlock Text="📅  Rendez-vous" FontSize="22" FontWeight="Bold"
+                       Foreground="{StaticResource TitleBrush}"/>
+            <TextBlock Text="Planification et suivi des rendez-vous" FontSize="12"
+                       Foreground="#B06080" Margin="0,2,0,0"/>
+        </StackPanel>
+
+        <!-- Barre de filtres -->
+        <Border Grid.Row="1" Background="White" CornerRadius="8"
+                BorderBrush="#F8C8D8" BorderThickness="1"
+                Padding="14,10" Margin="0,0,0,14">
+            <WrapPanel>
+                <TextBlock Text="Médecin" VerticalAlignment="Center" Margin="0,0,6,0"
+                           Foreground="#880E4F" FontSize="12"/>
+                <ComboBox x:Name="cbFiltreMedecin" Width="140" Margin="0,0,14,0"
+                          DisplayMemberPath="NomComplet" SelectedValuePath="Id"/>
+
+                <TextBlock Text="Patient" VerticalAlignment="Center" Margin="0,0,6,0"
+                           Foreground="#880E4F" FontSize="12"/>
+                <ComboBox x:Name="cbFiltrePatient" Width="140" Margin="0,0,14,0"
+                          DisplayMemberPath="NomComplet" SelectedValuePath="Id"/>
+
+                <TextBlock Text="Du" VerticalAlignment="Center" Margin="0,0,6,0"
+                           Foreground="#880E4F" FontSize="12"/>
+                <DatePicker x:Name="dpFiltreDebut" Width="120" Margin="0,0,8,0"/>
+                <TextBlock Text="Au" VerticalAlignment="Center" Margin="0,0,6,0"
+                           Foreground="#880E4F" FontSize="12"/>
+                <DatePicker x:Name="dpFiltreFin" Width="120" Margin="0,0,14,0"/>
+
+                <CheckBox x:Name="chkHistorique" Content="Historique (passés)"
+                          VerticalAlignment="Center" Margin="0,0,14,0"
+                          Foreground="#880E4F"/>
+
+                <Button Content="Filtrer"        Width="80"  Margin="0,0,6,0" Click="BtnFiltrer_Click"/>
+                <Button Content="Réinitialiser"  Width="100"                  Click="BtnReset_Click"
+                        Background="#E8A0B8"/>
+            </WrapPanel>
+        </Border>
+
+        <!-- Grille + Formulaire -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="280"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="White" CornerRadius="10"
+                    BorderBrush="#F8C8D8" BorderThickness="1" Margin="0,0,16,0">
+                <DataGrid x:Name="dgRendezVous" AutoGenerateColumns="False" IsReadOnly="True"
+                          SelectionMode="Single" SelectionChanged="dgRendezVous_SelectionChanged"
+                          MouseDoubleClick="dgRendezVous_MouseDoubleClick"
+                          BorderThickness="0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Patient" Binding="{Binding Patient.NomComplet}" Width="*"/>
+                        <DataGridTextColumn Header="Médecin" Binding="{Binding Medecin.NomComplet}" Width="*"/>
+                        <DataGridTextColumn Header="Début"
+                            Binding="{Binding DateDebut, StringFormat='dd/MM/yyyy HH:mm'}" Width="*"/>
+                        <DataGridTextColumn Header="Fin"
+                            Binding="{Binding DateFin, StringFormat='dd/MM/yyyy HH:mm'}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+
+            <Border Grid.Column="1" Background="White" CornerRadius="10"
+                    BorderBrush="#F8C8D8" BorderThickness="1" Padding="18,16">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <TextBlock Text="Fiche RDV" FontSize="16" FontWeight="Bold"
+                                   Foreground="{StaticResource TitleBrush}" Margin="0,0,0,14"/>
+
+                        <TextBlock Text="Patient" Foreground="#880E4F" FontSize="12" Margin="0,0,0,3"/>
+                        <ComboBox x:Name="cbPatient" DisplayMemberPath="NomComplet"
+                                  SelectedValuePath="Id" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Médecin" Foreground="#880E4F" FontSize="12" Margin="0,0,0,3"/>
+                        <ComboBox x:Name="cbMedecin" DisplayMemberPath="NomComplet"
+                                  SelectedValuePath="Id" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Date début / heure" Foreground="#880E4F" FontSize="12" Margin="0,0,0,3"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <DatePicker x:Name="dpDebut" Width="120"/>
+                            <TextBox x:Name="txtHeureDebut" Width="55" Margin="6,0,0,0" Text="09:00"/>
+                        </StackPanel>
+
+                        <TextBlock Text="Date fin / heure" Foreground="#880E4F" FontSize="12" Margin="0,0,0,3"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <DatePicker x:Name="dpFin" Width="120"/>
+                            <TextBox x:Name="txtHeureFin" Width="55" Margin="6,0,0,0" Text="09:30"/>
+                        </StackPanel>
+
+                        <TextBlock Text="Infos complémentaires" Foreground="#880E4F" FontSize="12" Margin="0,0,0,3"/>
+                        <TextBox x:Name="txtInfos" Height="55" TextWrapping="Wrap"
+                                 AcceptsReturn="True" Margin="0,0,0,16"/>
+
+                        <Button Content="Ajouter"          Height="32" Margin="0,0,0,5" Click="BtnAjouter_Click"/>
+                        <Button Content="Modifier"         Height="32" Margin="0,0,0,5" Click="BtnModifier_Click"/>
+                        <Button Content="Supprimer"        Height="32" Margin="0,0,0,5" Click="BtnSupprimer_Click"/>
+                        <Button Content="Nouveau / Vider"  Height="32" Margin="0,0,0,10" Click="BtnVider_Click"/>
+                        <Button Content="📄  Générer PDF"  Height="32" Click="BtnGenererPdf_Click"
+                                Background="#E91E63"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
