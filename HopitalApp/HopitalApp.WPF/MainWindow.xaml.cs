@@ -29,6 +29,9 @@ namespace HopitalApp.WPF
 
             if (!response.IsSuccessStatusCode)
             {
+                // AJOUT LOG
+                Logger.Log($"Échec connexion : {txtLogin.Text}");
+
                 MessageBox.Show("Identifiants incorrects.");
                 return;
             }
@@ -37,12 +40,27 @@ namespace HopitalApp.WPF
 
             if (result?.Role == "Administration")
             {
+                // AJOUT LOG
+                Logger.Log($"Connexion Administration : {txtLogin.Text}");
+
                 AdminWindow adminWindow = new AdminWindow();
                 adminWindow.Show();
                 this.Close();
             }
+            else if (result?.Role == "Accueil")
+            {
+                // AJOUT LOG
+                Logger.Log($"Connexion Accueil : {txtLogin.Text}");
+
+                AccueilWindow accueilWindow = new AccueilWindow();
+                accueilWindow.Show();
+                this.Close();
+            }
             else
             {
+                // AJOUT LOG
+                Logger.Log($"Rôle non autorisé : {txtLogin.Text}");
+
                 MessageBox.Show("Rôle non autorisé.");
             }
         }

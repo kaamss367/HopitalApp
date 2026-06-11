@@ -84,6 +84,14 @@
                 <Button Content="Modifier"        Height="35" Margin="0,0,0,5" Click="BtnModifier_Click"/>
                 <Button Content="Supprimer"       Height="35" Margin="0,0,0,5" Click="BtnSupprimer_Click"/>
                 <Button Content="Nouveau / Vider" Height="35"                  Click="BtnVider_Click"/>
+
+                <!-- ✅ NOUVEAU BOUTON PDF -->
+                <Button Content="Générer fiche PDF"
+        Height="35"
+        Margin="0,5,0,0"
+        Click="BtnGenererPdf_Click"/>
+
+
             </StackPanel>
         </Grid>
     </Grid>

@@ -6,6 +6,10 @@ using System.Net.Http.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using System.IO;
 
 namespace HopitalApp.WPF
 {
@@ -248,6 +252,58 @@ namespace HopitalApp.WPF
             return true;
         }
 
+        private void BtnGenererPdf_Click(object sender, RoutedEventArgs e)
+        {
+            if (rendezVousSelectionne == null)
+            {
+                MessageBox.Show("Sélectionne un rendez-vous avant de générer le PDF.");
+                return;
+            }
+
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            string dossier = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string nomFichier = $"Fiche_RendezVous_{rendezVousSelectionne.Id}.pdf";
+            string chemin = Path.Combine(dossier, nomFichier);
+
+            var rdv = rendezVousSelectionne;
+
+            Document.Create(container =>
+            {
+                container.Page(page =>
+                {
+                    page.Margin(40);
+
+                    page.Header()
+                        .Text("FICHE RENDEZ-VOUS")
+                        .FontSize(24)
+                        .Bold()
+                        .AlignCenter();
+
+                    page.Content().Column(column =>
+                    {
+                        column.Spacing(12);
+
+                        column.Item().Text($"Patient : {rdv.Patient?.NomComplet}");
+                        column.Item().Text($"Médecin : {rdv.Medecin?.NomComplet}");
+                        column.Item().Text($"Date de début : {rdv.DateDebut:dd/MM/yyyy HH:mm}");
+                        column.Item().Text($"Date de fin : {rdv.DateFin:dd/MM/yyyy HH:mm}");
+
+                        column.Item().PaddingTop(10).Text("Informations complémentaires :").Bold();
+                        column.Item().Text(rdv.InformationsComplementaires ?? "Aucune information complémentaire.");
+                    });
+
+                    page.Footer()
+                        .AlignCenter()
+                        .Text($"Document généré le {DateTime.Now:dd/MM/yyyy à HH:mm}");
+                });
+            })
+            .GeneratePdf(chemin);
+
+            Logger.Log($"PDF généré pour le rendez-vous {rdv.Id}");
+
+            MessageBox.Show($"PDF généré avec succès sur le bureau :\n{nomFichier}");
+        }
         private void Vider()
         {
             rendezVousSelectionne = null;
